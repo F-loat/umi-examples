@@ -1,6 +1,7 @@
 {
   "private": true,
   "scripts": {
+    "analyze": "cross-env ANALYZE=1 umi build",
     "start": "umi dev",
     "build": "umi build",
     "postinstall": "umi generate tmp",
@@ -20,9 +21,11 @@
     ]
   },
   "dependencies": {
+    "@ant-design/icons": "^4.2.2",
     "@ant-design/pro-layout": "^5.0.12",
     "@umijs/preset-react": "1.x",
     "@umijs/test": "^3.2.23",
+    "antd": "^4.7.2",
     "lint-staged": "^10.0.7",
     "mockjs": "^1.1.0",
     "prettier": "^1.19.1",
@@ -30,5 +33,8 @@
     "react-dom": "^16.12.0",
     "umi": "^3.2.23",
     "yorkie": "^2.0.0"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.2"
   }
 }

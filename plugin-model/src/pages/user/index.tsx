@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useModel } from 'umi';
 
 export default () => {
-  const { loading, data, create, update, remove } = useModel('user.index');
+  const { loading, data, run, create, update, remove } = useModel('user.index');
+
+  useEffect(() => {
+    run();
+  }, []);
 
   return (
     <>

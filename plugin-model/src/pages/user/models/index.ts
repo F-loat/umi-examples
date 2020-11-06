@@ -1,7 +1,9 @@
 import { request, useRequest } from 'umi';
+import { Modal, message } from 'antd';
 
 export default () => {
   const model = useRequest('/api/users', {
+    manual: true,
     initialData: [],
     formatResult(res) {
       return res.users || [];
@@ -22,9 +24,17 @@ export default () => {
   };
 
   const remove = (id: string) => {
-    return request(`/api/users/${id}`, {
-      method: 'DELETE'
-    }).then(model.refresh);
+    Modal.confirm({
+      title: '删除项目',
+      content: `确定删除 ${id}？`,
+      async onOk() {
+        await request(`/api/users/${id}`, {
+          method: 'DELETE'
+        });
+        model.refresh();
+        message.success('删除成功');
+      },
+    });
   };
 
   return { ...model, create, update, remove };
